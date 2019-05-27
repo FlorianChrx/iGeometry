@@ -56,7 +56,7 @@ public class Controller {
    private IComposition composition;
    private List<Node> allNodes;
 
-    public void initialize() throws LibraryException {
+   public void initialize() throws LibraryException {
         /*
         Construction de la composition
          */
@@ -79,7 +79,7 @@ public class Controller {
     }
 
 	public void save() {
-
+		
 	}
 	
 	public void switchGrille() {
