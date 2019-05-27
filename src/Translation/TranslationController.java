@@ -26,16 +26,16 @@ public class TranslationController {
 	
 	public void xSliderChanging(MouseEvent e) {
 		try {
-			xLabel.setText(String.format("%.2f", xSlider.getValue()));
-			xText.setText(xLabel.getText());
+			xLabel.setText(format(String.format("%.2f", xSlider.getValue())));
+			xText.setText(format(xLabel.getText()));
 		} catch (Exception e2) {
 			// TODO: handle exception
 		}
 	}
 	public void ySliderChanging(MouseEvent e) {
 		try {
-			yLabel.setText(String.format("%.2f", ySlider.getValue()));
-			yText.setText(yLabel.getText());
+			yLabel.setText(format(String.format("%.2f", ySlider.getValue())));
+			yText.setText(format(yLabel.getText()));
 		} catch (Exception e2) {
 			// TODO: handle exception
 		}
@@ -45,7 +45,7 @@ public class TranslationController {
 			try {
 				Double.parseDouble(xText.getText());
 				xSlider.setValue(Double.parseDouble(xText.getText()));
-				xLabel.setText(xText.getText());
+				xLabel.setText(format(xText.getText()));
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
@@ -56,11 +56,14 @@ public class TranslationController {
 			try {
 				Double.parseDouble(yText.getText());
 				ySlider.setValue(Double.parseDouble(yText.getText()));
-				yLabel.setText(yText.getText());
+				yLabel.setText(format(yText.getText()));
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
 		}
+	}
+	private String format(String string) {
+		return string.replace(",", ".");
 	}
 	public void confirm(ActionEvent e) {
 		Main.newTranslation(Double.parseDouble(xLabel.getText()), Double.parseDouble(yLabel.getText()));

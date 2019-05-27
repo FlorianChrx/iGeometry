@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <MenuBar fx:id="menu">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="saveItem" mnemonicParsing="false" onAction="#save" text="Save" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox prefHeight="448.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ListView fx:id="listView1" prefHeight="371.0" prefWidth="125.0" />
+            <ListView fx:id="listView2" prefHeight="371.0" prefWidth="125.0" />
+            <Pane fx:id="pane" prefHeight="371.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox fx:id="hBox" prefHeight="371.0" prefWidth="175.0">
+               <children>
+                  <CheckBox fx:id="cbGrille" mnemonicParsing="false" onAction="#switchGrille" text="Afficher la grille">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="cbTrace" mnemonicParsing="false" onAction="#switchTrace" text="Afficher la trace">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <Pane prefHeight="287.0" prefWidth="143.0" VBox.vgrow="ALWAYS" />
+                  <Slider fx:id="sliderAnimation" onMousePressed="#cursorAnimationChange" prefHeight="16.0" prefWidth="75.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Slider>
+                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="140.0">
+                     <children>
+                        <Button fx:id="btPlay" mnemonicParsing="false" onAction="#playAnimation" text="▶" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
