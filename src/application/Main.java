@@ -21,6 +21,9 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         new TranslationWindow(stage);
         new RotationWindow(stage);
+        
+        stage.setWidth(Double.MAX_VALUE);
+        stage.setHeight(Double.MAX_VALUE);
         stage.setScene(scene);
         
         stage.setTitle("IGraphics");

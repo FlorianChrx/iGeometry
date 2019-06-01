@@ -10,8 +10,8 @@
    <children>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="600.0">
          <children>
-            <Slider fx:id="slider" max="360.0" min="-360.0" onMouseDragged="#onChange" onMousePressed="#onChange" prefHeight="16.0" prefWidth="306.0" />
-            <Label fx:id="label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="29.0" prefWidth="133.0" text="0">
+            <Slider fx:id="slider" max="360.0" min="-360.0" onMouseDragged="#onChange" onMousePressed="#onChange" prefHeight="16.0" prefWidth="338.0" />
+            <Label fx:id="label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="29.0" prefWidth="50.0" text="0">
                <font>
                   <Font size="24.0" />
                </font>
