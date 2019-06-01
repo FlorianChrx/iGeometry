@@ -71,6 +71,7 @@ public class Controller {
          */
 		   
 	    composition = new Composition();
+	    listView1.getItems().add("Maison");
 	    
 	    display = new ArrayList<>();
 	    display.add(true);
@@ -143,6 +144,7 @@ public class Controller {
 		@Override
 		public void handle(ScrollEvent e) {
 			addRotation(e.getDeltaY(), 0,0);
+			listView2.getItems().add("Rotation : "+Math.abs(e.getDeltaY()%360));
 			setCurrent();
 		}
 	}
@@ -152,6 +154,7 @@ public class Controller {
 		public void handle(MouseEvent e) {
 			System.out.println(composition.xMouseToMath(e.getSceneX()) + " - " + composition.yMouseToMath(e.getSceneY()));
 			addTranslation(composition.xMouseToMath(e.getSceneX())-7, composition.yMouseToMath(e.getSceneY()));
+			listView2.getItems().add("Translation : "+composition.xMouseToMath(e.getSceneX()) + " - " + composition.yMouseToMath(e.getSceneY()));
 			setCurrent();
 		}
 	}
