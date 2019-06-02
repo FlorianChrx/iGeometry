@@ -4,10 +4,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Translation.TranslationController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="624.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="translation.TranslationController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
+            <Label prefHeight="17.0" prefWidth="114.0" text="Axe x:" />
             <Slider onMouseDragged="#xSliderChanging" onMousePressed="#xSliderChanging" fx:id="xSlider" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="15.0" prefWidth="152.0" text="0" fx:id="xLabel" />
             <TextField onKeyPressed="#xTextSet" text="0" fx:id="xText" />
@@ -15,9 +16,15 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="96.0" prefWidth="497.0">
          <children>
-            <Slider fx:id="ySlider" onMousePressed="#ySliderChanging" onMouseDragged="#ySliderChanging" />
+            <Label prefHeight="17.0" prefWidth="114.0" text="Axe y:" />
+            <Slider fx:id="ySlider" onMouseDragged="#ySliderChanging" onMousePressed="#ySliderChanging" />
             <Label fx:id="yLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="15.0" prefWidth="152.0" text="0" />
             <TextField fx:id="yText" onKeyPressed="#yTextSet" text="0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#confirm" text="Confirmer" />
          </children>
       </HBox>
    </children>
