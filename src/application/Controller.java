@@ -1,13 +1,10 @@
 package application;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import javax.xml.ws.handler.MessageContext.Scope;
-
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -21,12 +18,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import rotation.RotationWindow;
 import transforms.Composition;
 import transforms.IComposition;
 import transforms.LibraryException;
 import transforms.elementaires.Rotation;
 import transforms.elementaires.Translation;
-import transforms.mobile.Maison;
+import translation.TranslationWindow;
 
 public class Controller {
 	@FXML
@@ -64,11 +63,15 @@ public class Controller {
    private List<Node> allNodes;
    private ArrayList<Boolean> display;
    private int iLast = 0;
-
+   private ArrayList<Stage> stages;
+   
+   
+   
    public void initialize() throws LibraryException {
         /*
         Construction de la composition
          */
+	   stages = new ArrayList<Stage>();
 		   
 	    composition = new Composition();
 	    listView1.getItems().add("Maison");
@@ -82,13 +85,12 @@ public class Controller {
         
         pane.getChildren().addAll(allNodes);
         
-        
         composition.setZoom(35, pane.getPrefWidth()/2+400, pane.getPrefHeight()/2+200);
         pane.setPickOnBounds(false);
         pane.getChildren().add(composition.getGrille(pane));
     }
    
-   private void addTranslation(double x, double y) {
+   public void addTranslation(double x, double y) {
 	   composition.add(new Translation(x, y));
 	   display.add(true);
 	   try {
@@ -100,7 +102,7 @@ public class Controller {
 	   pane.getChildren().add(allNodes.get(allNodes.size()-1));
    }
    
-   private void addRotation(double angle, double x, double y) {
+   public void addRotation(double angle, double x, double y) {
 	   composition.add(new Rotation(angle, x, y));
 	   display.add(true);
 	   try {
@@ -156,6 +158,35 @@ public class Controller {
 			addTranslation(composition.xMouseToMath(e.getSceneX())-7, composition.yMouseToMath(e.getSceneY()));
 			listView2.getItems().add("Translation : "+composition.xMouseToMath(e.getSceneX()) + " - " + composition.yMouseToMath(e.getSceneY()));
 			setCurrent();
+		}
+	}
+
+	public IComposition getComposition() {
+		return composition;
+	}
+
+	public ArrayList<Stage> getStages() {
+		return stages;
+	}
+
+	public void setStages(ArrayList<Stage> stages) {
+		this.stages = stages;
+	}
+	
+	public void newRotation() {
+		Main.closeAll();
+		try {
+			stages.add(new RotationWindow(Main.getMainStage()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void newTranslation() {
+		Main.closeAll();
+		try {
+			stages.add(new TranslationWindow(Main.getMainStage()));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
