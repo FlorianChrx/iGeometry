@@ -1,4 +1,4 @@
-package translation;
+package Translation;
 
 import java.io.IOException;
 

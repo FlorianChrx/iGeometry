@@ -1,4 +1,4 @@
-package translation;
+package Translation;
 
 import application.Main;
 import javafx.event.ActionEvent;
@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -40,6 +41,7 @@ public class TranslationController {
 		}
 	}
 	public void xTextSet(KeyEvent e) {
+		if (e.getCode().equals(KeyCode.ENTER)) {
 			try {
 				Double.parseDouble(xText.getText());
 				xSlider.setValue(Double.parseDouble(xText.getText()));
@@ -47,8 +49,10 @@ public class TranslationController {
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
+		}
 	}
 	public void yTextSet(KeyEvent e) {
+		if (e.getCode().equals(KeyCode.ENTER)) {
 			try {
 				Double.parseDouble(yText.getText());
 				ySlider.setValue(Double.parseDouble(yText.getText()));
@@ -56,12 +60,12 @@ public class TranslationController {
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
+		}
 	}
 	private String format(String string) {
 		return string.replace(",", ".");
 	}
 	public void confirm(ActionEvent e) {
-		Main.getController().addTranslation(Double.parseDouble(xLabel.getText()), Double.parseDouble(yLabel.getText()));
-		Main.closeAll();
+		Main.newTranslation(Double.parseDouble(xLabel.getText()), Double.parseDouble(yLabel.getText()));
 	}
 }
